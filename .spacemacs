@@ -20,7 +20,6 @@
 
 (setq-default
  ;; Default theme applied at startup
-; dotspacemacs-default-theme 'solarized-light
  dotspacemacs-default-theme 'monokai
  ;; The leader key
  dotspacemacs-leader-key "SPC"
@@ -63,7 +62,7 @@
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
   (set-face-attribute 'default nil :height 160)
-  (setq default-directory "c:/Users/Yunfeng")
+  (setq default-directory (getenv "HOME"))
   (recentf-mode 1)
   (global-set-key (kbd "C-c f") 'recentf-open-files)
 )
