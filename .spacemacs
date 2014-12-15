@@ -10,7 +10,8 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load.
- dotspacemacs-configuration-layers '(themes-megapack go)
+;; dotspacemacs-configuration-layers '(themes-megapack go)
+ dotspacemacs-configuration-layers '(go)
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
 )
@@ -63,6 +64,7 @@
 This function is called at the very end of Spacemacs initialization."
   (set-face-attribute 'default nil :height 160)
   (setq default-directory (getenv "HOME"))
+  (menu-bar-mode)
   (recentf-mode 1)
   (global-set-key (kbd "C-c f") 'recentf-open-files)
 )
