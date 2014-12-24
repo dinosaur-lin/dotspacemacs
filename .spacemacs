@@ -5,6 +5,15 @@
 ;; Configuration Layers
 ;; --------------------
 
+(require 'recentf)
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
 (setq-default
  ;; List of additional paths where to look for configuration layers.
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
@@ -66,7 +75,7 @@ This function is called at the very end of Spacemacs initialization."
   (setq default-directory (getenv "HOME"))
   (menu-bar-mode)
   (recentf-mode 1)
-  (global-set-key (kbd "C-c f") 'recentf-open-files)
+  (global-set-key (kbd "C-x f") 'ido-recentf-open)
 )
 
 ;; Custom variables
