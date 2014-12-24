@@ -74,7 +74,8 @@ This function is called at the very end of Spacemacs initialization."
   (set-face-attribute 'default nil :height 160)
   (setq default-directory (getenv "HOME"))
   (menu-bar-mode)
-  (recentf-mode 1)
+  (setq recentf-max-saved-items 50)
+  (recentf-mode t)
   (global-set-key (kbd "C-x f") 'ido-recentf-open)
 )
 
