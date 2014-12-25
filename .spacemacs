@@ -14,6 +14,14 @@
       (message "Opening file...")
     (message "Aborting")))
 
+(defun maximize-windowsnt-frame ()
+  "Maximizes the active frame in Windows"
+  (interactive)
+  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
+  ;; `SC_MAXIMIZE' parameter.
+  (when (eq system-type 'windows-nt)
+    (w32-send-sys-command 61488)))
+
 (setq-default
  ;; List of additional paths where to look for configuration layers.
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
@@ -77,7 +85,7 @@ This function is called at the very end of Spacemacs initialization."
   (setq recentf-max-saved-items 50)
   (recentf-mode t)
   (evil-leader/set-key "f r" 'ido-recentf-open)
-  (add-hook 'window-setup-hook 'maximize-frame t)
+  (add-hook 'window-setup-hook 'maximize-windowsnt-frame t)
 )
 
 ;; Custom variables
