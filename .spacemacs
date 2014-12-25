@@ -76,7 +76,8 @@ This function is called at the very end of Spacemacs initialization."
   (menu-bar-mode)
   (setq recentf-max-saved-items 50)
   (recentf-mode t)
-  (global-set-key (kbd "C-x f") 'ido-recentf-open)
+  (evil-leader/set-key "f r" 'ido-recentf-open)
+  (add-hook 'window-setup-hook 'maximize-frame t)
 )
 
 ;; Custom variables
