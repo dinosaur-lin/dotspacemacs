@@ -85,6 +85,7 @@ This function is called at the very end of Spacemacs initialization."
   (setq recentf-max-saved-items 50)
   (recentf-mode t)
   (evil-leader/set-key "f r" 'ido-recentf-open)
+  (evil-leader/set-key "b s" 'ido-switch-buffer)
   (add-hook 'window-setup-hook 'maximize-windowsnt-frame t)
 )
 
