@@ -86,6 +86,7 @@ This function is called at the very end of Spacemacs initialization."
   (recentf-mode t)
   (evil-leader/set-key "f r" 'ido-recentf-open)
   (evil-leader/set-key "b s" 'ido-switch-buffer)
+  (evil-leader/set-key "e e" 'eval-last-sexp)
   (add-hook 'window-setup-hook 'maximize-windowsnt-frame t)
 )
 
