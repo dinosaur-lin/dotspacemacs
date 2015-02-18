@@ -5,12 +5,12 @@
 ;; Configuration Layers
 ;; --------------------
 (defun maximize-windowsnt-frame ()
-  "Maximizes the active frame in Windows"
-  (interactive)
-  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
-  ;; `SC_MAXIMIZE' parameter.
-  (when (eq system-type 'windows-nt)
-    (w32-send-sys-command 61488)))
+"Maximizes the active frame in Windows"
+(interactive)
+;; Send a `WM_SYSCOMMAND' message to the active frame with the
+;; `SC_MAXIMIZE' parameter.
+(when (eq system-type 'windows-nt)
+  (w32-send-sys-command 61488)))
 
 (setq-default
  ;; List of additional paths where to look for configuration layers.
@@ -18,13 +18,13 @@
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load. If it is the symbol `all' instead
  ;; of a list then all discovered layers will be installed.
- dotspacemacs-configuration-layers '(go)
+ dotspacemacs-configuration-layers '()
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
  ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
  ;; are declared in a layer which is not a member of
  ;; the list `dotspacemacs-configuration-layers'
- dotspacemacs-delete-orhpan-packages t
+ dotspacemacs-delete-orphan-packages t
 )
 
 ;; Settings
@@ -40,14 +40,15 @@
  ;; Press <SPC> T n to cycle to the next theme in the list (works great
  ;; with 2 themes variants, one dark and one light)
  dotspacemacs-themes '(monokai
-                       solarized-dark
                        solarized-light
+                       solarized-dark
                        leuven
                        zenburn)
  ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
  ;; size to make separators look not too crappy.
- dotspacemacs-default-font '("Source Code Pro"
-                             :size 16
+;; dotspacemacs-default-font '("Source Code Pro"
+dotspacemacs-default-font '("Consolas"
+                             :size 13
                              :weight normal
                              :width normal
                              :powerline-scale 1.1)
@@ -64,6 +65,10 @@
  ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
  ;; the commands bound to the current keystrokes.
  dotspacemacs-guide-key-delay 0.4
+ ;; If non nil a progress bar is displayed when spacemacs is loading. This
+ ;; may increase the boot time on some systems and emacs builds, set it to nil
+ ;; to boost the loading time.
+ dotspacemacs-loading-progress-bar t
  ;; Enable micro-state for helm buffer when pressing on TAB."
  dotspacemacs-helm-micro-state t
  ;; If non nil the frame is fullscreen when Emacs starts up (Emacs 24.4+ only).
@@ -109,7 +114,7 @@
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  (set-face-attribute 'default nil :height 160)
+  (set-face-attribute 'default nil :family "Consolas" :height 160)
   (setq default-directory (getenv "HOME"))
   (menu-bar-mode)
   (evil-leader/set-key "e e" 'eval-last-sexp)
